@@ -1,0 +1,14 @@
+resources:
+- deployment.yaml
+- ingress.yaml
+- service.yaml
+
+commonLabels:
+  app: sample-app
+
+namespace: demo
+
+images:
+- name: sample-app
+  newName: quay.io/lukeelten/okd-sample-app
+  newTag: latest
