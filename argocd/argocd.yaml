@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ArgoCD
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  server:
+    route:
+      enabled: true
+      tls:
+        termination: reencrypt
+  rbac:
+    defaultPolicy: 'role:readonly'
+    policy: |
+      g, admins, role:admin
+      g, developer, role:readonly
+    scopes: '[groups]'
+  initialRepositories: |
+    - url: https://github.com/lukeelten/mastering-gitops-argocd.git
+      type: git
+  usersAnonymousEnabled: false
+  dex:
+    openShiftOAuth: true
+    version: v2.31.1
+  version: v2.3.3
+  ha:
+    enabled: false
