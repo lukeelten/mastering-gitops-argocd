@@ -2,6 +2,7 @@ resources:
 - deployment.yaml
 - ingress.yaml
 - service.yaml
+- namespace.yaml
 
 commonLabels:
   app: sample-app
