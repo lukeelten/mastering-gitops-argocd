@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd
+spec:
+  tls:
+    - secretName: argocd-tls-cert
+      hosts:
+        - argocd.cc-openshift.de
+  rules:
+    - host: argocd.cc-openshift.de
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  number: 8080

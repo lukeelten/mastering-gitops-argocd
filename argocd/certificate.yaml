@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: argocd-cert
+spec:
+  commonName: argocd.cc-openshift.de
+  dnsNames:
+    - argocd.cc-openshift.de
+  issuerRef:
+    kind: ClusterIssuer
+    name: route53
+  secretName: argocd-tls-cert

@@ -1,3 +1,24 @@
 resources:
-- argocd.yaml
-- nginx-example.yaml
+- install.yaml
+- ingress.yaml
+- certificate.yaml
+
+patchesStrategicMerge:
+  - argocd-cm.yaml
+  - argocd-rbac.yaml
+  - argocd-cmd-params.yaml
+
+namespace: argocd
+
+patchesJson6902:
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: argocd-redis
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/securityContext
+
+commonLabels:
+  app: argocd
