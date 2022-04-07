@@ -2,11 +2,7 @@ resources:
 - install.yaml
 - ingress.yaml
 - certificate.yaml
-
-patchesStrategicMerge:
-  - argocd-cm.yaml
-  - argocd-rbac.yaml
-  - argocd-cmd-params.yaml
+- namespace.yaml
 
 namespace: argocd
 
@@ -19,6 +15,15 @@ patchesJson6902:
     patch: |-
       - op: remove
         path: /spec/template/spec/securityContext
+  - target:
+      kind: ConfigMap
+      name: argocd-cmd-params-cm
+      version: v1
+    patch: |-
+      - op: add
+        path: /data
+        value:
+          server.insecure: 'true'
 
 commonLabels:
   app: argocd
