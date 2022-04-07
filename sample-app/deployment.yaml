@@ -9,6 +9,9 @@ spec:
       containers:
         - name: main
           image: sample-app
+          resources:
+            limits:
+              memory: 256Mi
           ports:
             - containerPort: 8080
               protocol: TCP
