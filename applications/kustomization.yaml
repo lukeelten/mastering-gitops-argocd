@@ -1,7 +1,8 @@
 resources:
-- argocd.yaml
 - project-apps.yaml
+- argocd.yaml
 - sample-app.yaml
+- applications.yaml
 
 namespace: argocd
 

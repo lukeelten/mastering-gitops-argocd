@@ -1,16 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd
+  name: applications
 spec:
-  destination:
-    namespace: argocd
-    server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: argocd
     repoURL: 'https://github.com/lukeelten/mastering-gitops-argocd.git'
+    path: applications
     targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
   syncPolicy:
     automated:
       prune: true
