@@ -1,0 +1,49 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: argocd
+spec:
+  groups:
+    - name: argocd.alerts
+      rules:
+        - alert: UnhealthyApplication
+          annotations:
+            message: >-
+              Application {{ $labels.name }} is unhealthy
+          expr: |
+            argocd_app_info{health_status!="Healthy"} >= 1
+          for: 5m
+          labels:
+            service: argocd
+            severity: high
+        - alert: ApplicationOutOfSync
+          annotations:
+            message: >-
+              Application {{ $labels.name }} is out-of-sync
+          expr: |
+            argocd_app_info{sync_status!="Synced"} >= 1
+          for: 5m
+          labels:
+            service: argocd
+            severity: warning
+        - alert: ArgoCDClusterStatus
+          annotations:
+            message: >-
+              ArgoCD cluster is unavailable or missing
+          expr: |
+            sum(argocd_cluster_info{namespace="argocd"}) < 1
+          for: 5m
+          labels:
+            service: argocd
+            severity: critical
+        - alert: ArgoCDkubectlPending
+          annotations:
+            message: >-
+              ArgoCD has kubectl executions pending for too long
+          expr: |
+            argocd_kubectl_exec_pending{namespace="argocd"} > 0
+          for: 10m
+          labels:
+            service: argocd
+            severity: warning
+
