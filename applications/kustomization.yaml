@@ -1,0 +1,4 @@
+resources:
+- argocd.yaml
+- project-apps.yaml
+- sample-app.yaml

@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: sample-app
+  name: argocd
 spec:
   destination:
-    namespace: demo
+    namespace: argocd
     server: 'https://kubernetes.default.svc'
-  project: applications
+  project: default
   source:
-    path: sample-app
+    path: argocd
     repoURL: 'https://github.com/lukeelten/mastering-gitops-argocd.git'
     targetRevision: HEAD

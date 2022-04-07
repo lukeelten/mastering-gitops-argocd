@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: applications
+spec:
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: Namespace
+  destinations:
+    - name: in-cluster
+      namespace: '*'
+      server: 'https://kubernetes.default.svc'
+  sourceRepos:
+    - 'https://github.com/lukeelten/mastering-gitops-argocd.git'
