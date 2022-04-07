@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+data:
+  # Argo CD's externally facing base URL (optional). Required when configuring SSO
+  url: https://argocd.cc-openshift.de
+
+  # Enables anonymous user access. The anonymous users get default role permissions specified argocd-rbac-cm.yaml.
+  users.anonymous.enabled: "false"
+
+  # The metadata.label key name where Argo CD injects the app name as a tracking label (optional).
+  # Tracking labels are used to determine which resources need to be deleted when pruning.
+  # If omitted, Argo CD injects the app name into the label: 'app.kubernetes.io/instance'
+  application.instanceLabelKey: argocd.cc-openshift.de/argocd
+
+  # disables admin user. Admin is enabled by default
+  admin.enabled: "true"

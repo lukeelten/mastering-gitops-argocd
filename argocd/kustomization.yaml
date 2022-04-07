@@ -4,6 +4,9 @@ resources:
 - certificate.yaml
 - namespace.yaml
 
+patchesStrategicMerge:
+  - argocd-cm.yaml
+
 namespace: argocd
 
 patchesJson6902:
