@@ -6,6 +6,7 @@ resources:
 
 patchesStrategicMerge:
   - argocd-cm.yaml
+  - argocd-rbac-cm.yaml
 
 namespace: argocd
 
