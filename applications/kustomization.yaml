@@ -4,6 +4,7 @@ resources:
 - sample-app.yaml
 - applications.yaml
 - cert-manager.yaml
+- monitoring.yaml
 
 namespace: argocd
 

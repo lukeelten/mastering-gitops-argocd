@@ -3,6 +3,7 @@ resources:
 - ingress.yaml
 - certificate.yaml
 - namespace.yaml
+- rolebinding.yaml
 
 patchesStrategicMerge:
 - argocd-cm.yaml

@@ -2,4 +2,4 @@ resources:
 - alerts.yaml
 - service-monitors.yaml
 
-namespace: argocd
+namespace: openshift-monitoring
