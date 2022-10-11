@@ -9,6 +9,9 @@ spec:
       containers:
         - name: main
           image: sample-app
+          env:
+          - name: TEST
+            value: TEST
           resources:
             limits:
               memory: 256Mi
