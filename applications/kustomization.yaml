@@ -3,6 +3,7 @@ resources:
 - argocd.yaml
 - sample-app.yaml
 - applications.yaml
+- cert-manager.yaml
 
 namespace: argocd
 
