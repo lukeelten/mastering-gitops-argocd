@@ -3,6 +3,10 @@ kind: Ingress
 metadata:
   name: sample-app
 spec:
+  tls:
+    - secretName: sample-app-cert
+      hosts:
+        - sample-app.apps.argocd.cc-openshift.de
   rules:
     - host: sample-app.apps.argocd.cc-openshift.de
       http:

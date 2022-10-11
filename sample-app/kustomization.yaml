@@ -3,6 +3,7 @@ resources:
 - ingress.yaml
 - service.yaml
 - namespace.yaml
+- certificate.yaml
 
 commonLabels:
   app: sample-app

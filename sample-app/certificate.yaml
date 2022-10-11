@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: sample-app-cert
+spec:
+  commonName: sample-app.apps.argocd.cc-openshift.de
+  dnsNames:
+    - sample-app.apps.argocd.cc-openshift.de
+  issuerRef:
+    kind: ClusterIssuer
+    name: route53
+  secretName: sample-app-cert
