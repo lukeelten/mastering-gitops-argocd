@@ -1,0 +1,5 @@
+resources:
+- alerts.yaml
+- service-monitors.yaml
+
+namespace: argocd

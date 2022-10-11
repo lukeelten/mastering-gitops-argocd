@@ -1,0 +1,7 @@
+resources:
+- cert-manager.yaml
+- credential-request.yaml
+- issuer.yaml
+
+patchesStrategicMerge:
+- cert-manager-patch.yaml
